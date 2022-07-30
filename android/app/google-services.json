@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "61429282501",
+    "project_id": "appfox-test-app",
+    "storage_bucket": "appfox-test-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61429282501:android:e3e564eb0de4dcae9e62ac",
+        "android_client_info": {
+          "package_name": "com.example.appfox_test_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61429282501-41ibs1hnqs3dplt63m5isl70b4fj5oea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA20uwd-HnPo-D3q94pCzWVhfCe9Y6NRzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61429282501-41ibs1hnqs3dplt63m5isl70b4fj5oea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
