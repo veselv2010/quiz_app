@@ -1,9 +1,6 @@
 import 'package:appfox_test_app/core/domain/models/quiz.dart';
 import 'package:appfox_test_app/presentation/quiz_page/bloc/quiz_bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class QuizQuestionWidget extends StatelessWidget {

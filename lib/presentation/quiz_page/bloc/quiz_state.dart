@@ -98,17 +98,29 @@ class QuestionState {
       answerE: question.answers.answer_e != null ? false : null,
       answerF: question.answers.answer_f != null ? false : null,
       correctAnswerA:
-          question.correct_answers.answer_a_correct.toLowerCase() == 'true' ? true : false,
+          question.correct_answers.answer_a_correct.toLowerCase() == 'true'
+              ? true
+              : false,
       correctAnswerB:
-          question.correct_answers.answer_b_correct.toLowerCase() == 'true' ? true : false,
+          question.correct_answers.answer_b_correct.toLowerCase() == 'true'
+              ? true
+              : false,
       correctAnswerC:
-          question.correct_answers.answer_c_correct.toLowerCase() == 'true' ? true : false,
+          question.correct_answers.answer_c_correct.toLowerCase() == 'true'
+              ? true
+              : false,
       correctAnswerD:
-          question.correct_answers.answer_d_correct.toLowerCase() == 'true' ? true : false,
+          question.correct_answers.answer_d_correct.toLowerCase() == 'true'
+              ? true
+              : false,
       correctAnswerE:
-          question.correct_answers.answer_e_correct.toLowerCase() == 'true' ? true : false,
+          question.correct_answers.answer_e_correct.toLowerCase() == 'true'
+              ? true
+              : false,
       correctAnswerF:
-          question.correct_answers.answer_f_correct.toLowerCase() == 'true' ? true : false,
+          question.correct_answers.answer_f_correct.toLowerCase() == 'true'
+              ? true
+              : false,
     );
   }
 

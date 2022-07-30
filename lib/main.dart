@@ -1,7 +1,6 @@
 import 'package:appfox_test_app/core/data/firebase_repository.dart';
 import 'package:appfox_test_app/core/data/quiz_repository.dart';
 import 'package:appfox_test_app/router/app_router.gr.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,4 @@
 import 'package:appfox_test_app/core/domain/models/quiz.dart';
-import 'package:appfox_test_app/core/domain/models/result.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 

@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:appfox_test_app/core/domain/models/quiz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 class QuizRepository {
   final Dio client;
@@ -46,7 +43,8 @@ class QuizRepository {
     });
 
     if (res.statusCode == 200) {
-      final questions = res.data.map<QuizQuestion>((e) => QuizQuestion.fromJson(e)).toList();
+      final questions =
+          res.data.map<QuizQuestion>((e) => QuizQuestion.fromJson(e)).toList();
       return Quiz(questions);
     }
 

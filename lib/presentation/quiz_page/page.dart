@@ -5,7 +5,6 @@ import 'package:appfox_test_app/core/domain/models/result.dart';
 import 'package:appfox_test_app/presentation/quiz_page/bloc/quiz_bloc.dart';
 import 'package:appfox_test_app/presentation/quiz_page/widgets/quiz_question_widget.dart';
 import 'package:appfox_test_app/router/app_router.gr.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +42,7 @@ class _QuizPageState extends State<QuizPage> {
       appBar: AppBar(
         title: Text('${widget.category}/${widget.difficulty}'),
         automaticallyImplyLeading: false,
-        leading: AutoLeadingButton(),
+        leading: const AutoLeadingButton(),
       ),
       body: FutureBuilder<Quiz?>(
         future: repository.getQuiz(
@@ -80,38 +79,7 @@ class _QuizPageState extends State<QuizPage> {
                         },
                       ),
                     ),
-                    getPageViewControls(),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          final loadingDialog = showDialog(
-                            context: context,
-                            builder: (context) => const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                          );
-                          final state = context.read<QuizBloc>().state;
-
-                          final res = await firebaseRepository.sendResults(
-                            Result(
-                                date: DateTime.now().millisecondsSinceEpoch,
-                                correctAnswers: state.getCorrectAnswersCount(),
-                                incorrectAnswers:
-                                    state.getIncorrectAnswersCount(),
-                                difficulty: widget.difficulty,
-                                theme: widget.category),
-                          );
-
-                          if (mounted) {
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context)
-                                .navigate(ResultPageRoute(resultId: res));
-                          }
-                        },
-                        child: Text('End quiz'),
-                      ),
-                    ),
+                    getPageControls(context),
                   ],
                 );
               },
@@ -122,30 +90,64 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
-  Widget getPageViewControls() {
+  Widget getPageControls(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
+      child: Column(
         children: [
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () => pageController.previousPage(
-                duration: Duration(milliseconds: 150),
-                curve: Curves.easeInOut,
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => pageController.previousPage(
+                    duration: const Duration(milliseconds: 150),
+                    curve: Curves.easeInOut,
+                  ),
+                  child: const Text('Previous page'),
+                ),
               ),
-              child: Text('Previous page'),
-            ),
-          ),
-          const SizedBox(
-            width: 16.0,
-          ),
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () => pageController.nextPage(
-                duration: Duration(milliseconds: 150),
-                curve: Curves.easeInOut,
+              const SizedBox(
+                width: 16.0,
               ),
-              child: Text('Next page'),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => pageController.nextPage(
+                    duration: const Duration(milliseconds: 150),
+                    curve: Curves.easeInOut,
+                  ),
+                  child: const Text('Next page'),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () async {
+                showDialog(
+                  context: context,
+                  builder: (context) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+                final state = context.read<QuizBloc>().state;
+
+                final res = await firebaseRepository.sendResults(
+                  Result(
+                      date: DateTime.now().millisecondsSinceEpoch,
+                      correctAnswers: state.getCorrectAnswersCount(),
+                      incorrectAnswers: state.getIncorrectAnswersCount(),
+                      difficulty: widget.difficulty,
+                      theme: widget.category),
+                );
+
+                if (mounted) {
+                  AutoRouter.of(context).pop();
+                  AutoRouter.of(context)
+                      .navigate(ResultPageRoute(resultId: res));
+                }
+              },
+              child: const Text('End quiz'),
             ),
           ),
         ],

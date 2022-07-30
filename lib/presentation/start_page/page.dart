@@ -25,12 +25,12 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz App'),
+        title: const Text('Quiz App'),
       ),
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           DropdownButton<String>(
-            hint: Text('Category'),
+            hint: const Text('Category'),
             value: selectedCategory,
             items: repository
                 .getCategories()
@@ -41,7 +41,7 @@ class _StartPageState extends State<StartPage> {
             }),
           ),
           DropdownButton<String>(
-            hint: Text('Difficulty'),
+            hint: const Text('Difficulty'),
             value: selectedDifficulty,
             items: repository
                 .getDifficulties()
